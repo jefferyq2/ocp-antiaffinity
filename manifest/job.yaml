@@ -1,0 +1,43 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: topology
+spec:
+  template:
+    spec:
+      containers:
+        - name: topology
+          image: quay.shakey.dev/lshakesp/govc:latest
+          command: ["/script/topology.sh"]
+          securityContext:
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: script
+              mountPath: /script
+            - name: ca-certificate
+              mountPath: /certificates
+      volumes:
+        - name: config
+          configMap:
+            name: cluster
+        - name: script
+          configMap:
+            name: topology-script
+            defaultMode: 0550
+        - name: ca-certificate
+          configMap:
+            name: ca-certificate
+
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: pull-secret
+  backoffLimit: 0

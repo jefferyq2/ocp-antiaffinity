@@ -1,0 +1,19 @@
+---
+region: cnimtlk
+zones:
+  - name: 1a
+    hosts:
+      - esx1.example.com
+  - name: 1b
+    hosts:
+      - esx2.example.com
+  - name: 1c
+    hosts:
+      - esx3.example.com
+roles:
+  - name: master
+    label: node-role.kubernetes.io/control-plane
+  - name: app
+    label: node-role.kubernetes.io/app
+  - name: infra
+    label: node-role.kubernetes.io/infra

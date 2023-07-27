@@ -1,0 +1,39 @@
+# Compiled Python files
+*.pyc
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini
+
+# Thumbnail cache files
+._*
+Thumbs.db
+
+# Files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# Archives
+*.tar.gz
+*.tgz
+*.zip
+
+# VSCode workspace files
+*.code-workspace
+.vscode
+
+# Log files
+*.log
+*.out
+
+# Credentials
+auth.json
+vars.sh
+
+# Ignore testing machinesets
+*-workers.yaml
+
+# Ignore testing credential files
+manifest/*-secret.yaml
+manifest/cluster.yaml
+manifest/ca-configmap.yaml

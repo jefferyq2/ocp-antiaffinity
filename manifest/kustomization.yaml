@@ -1,0 +1,16 @@
+---
+namespace: vmware-topology
+resources:
+  - namespace.yaml
+  - serviceaccount.yaml
+  - ca-configmap.yaml
+  - pull-secret.yaml
+  - vsphere-secret.yaml
+  - job.yaml
+configMapGenerator:
+  - name: cluster
+    files:
+      - ./cluster.yaml
+  - name: topology-script
+    files:
+      - ./topology.sh
